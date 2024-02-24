@@ -1,17 +1,26 @@
-﻿
-var name = "Dominik";
-var sex = "Mężczyzna";
-var age = 16;
+﻿int number = 4566;
+string numberString = number.ToString();
+char[] letters = numberString.ToCharArray();
+Console.WriteLine("Wybrana liczba to: " + number);
 
-if (sex == "Kobieta" && age < 30)
+List<int> counters = new List<int>(10);
+
+
+for (int i = 0; i < 10; i++)
 {
-    Console.WriteLine("Kobieta poniżej 30lat");
+    counters.Add(0);
 }
-else if (name == "Ewa" && age == 30)
+
+foreach (char letter in letters)
 {
-    Console.WriteLine("Ewa, lat 30");
+    if (Char.IsDigit(letter))
+    {
+        int digit = letter - '0';
+        counters[digit]++;
+    }
 }
-else if (sex == "Mężczyzna" && age < 18)
+
+for (int i = 0; i < 10; i++)
 {
-    Console.WriteLine("Niepelnoletni mężczyzna");
+    Console.WriteLine(i + " ==> " + counters[i]);
 }
