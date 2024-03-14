@@ -1,26 +1,50 @@
-﻿int number = 4566;
-string numberString = number.ToString();
-char[] letters = numberString.ToCharArray();
-Console.WriteLine("Wybrana liczba to: " + number);
+﻿using ChallengeApp;
 
-List<int> counters = new List<int>(10);
+Employee employee1 = new Employee("Dominik", "Warchol", 27);
+Employee employee2 = new Employee("Jan", "Kowalski", 31);
+Employee employee3 = new Employee("Magdalena", "Jaśkowiak", 29);
+
+employee1.AddScore(2);
+employee1.AddScore(5);
+employee1.AddScore(8);
+employee1.AddScore(5);
+employee1.AddScore(8);
+
+employee2.AddScore(4);
+employee2.AddScore(6);
+employee2.AddScore(9);
+employee2.AddScore(6);
+employee2.AddScore(9);
+
+employee3.AddScore(2);
+employee3.AddScore(7);
+employee3.AddScore(5);
+employee3.AddScore(7);
+employee3.AddScore(5);
 
 
-for (int i = 0; i < 10; i++)
+List<Employee> employees = new List<Employee>()
 {
-    counters.Add(0);
-}
+    employee1, employee2, employee3
+};
 
-foreach (char letter in letters)
+int maxResult = -1;
+
+Employee employeeWithMaxResult = null;
+
+foreach (var employee in employees)
 {
-    if (Char.IsDigit(letter))
+    if (employee.Result > maxResult)
     {
-        int digit = letter - '0';
-        counters[digit]++;
+        maxResult = employee.Result;
+        employeeWithMaxResult = employee;
     }
 }
 
-for (int i = 0; i < 10; i++)
-{
-    Console.WriteLine(i + " ==> " + counters[i]);
-}
+Console.WriteLine("======================");
+Console.WriteLine("   NAJLEPSZY GRACZ: ");
+Console.WriteLine(employeeWithMaxResult.Name + " " + employeeWithMaxResult.Surname + " | WIEK " + employeeWithMaxResult.Age);
+Console.WriteLine("======================");
+Console.WriteLine("   SUMA PUNKTÓW: ");
+Console.WriteLine("    " + maxResult + " PUNKTÓW");
+Console.WriteLine("======================");
