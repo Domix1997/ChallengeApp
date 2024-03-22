@@ -4,68 +4,39 @@ namespace ChallengeApp.Tests
     {
 
         [Test]
-        public void WhenNamesAreDifferent()
-
+        
+        public void Test1()
         {
-            // arrange 
-            var employee1 = GetEmployee("Dominik", "Warchol", 27);
-            var employee2 = GetEmployee("Jan", "Kowalski", 31);
+            //arrange
+            var employee1 = new Employee("Dominik", "Warchol", 27);
+            employee1.AddScore(5);
+            employee1.AddScore(3);
+            employee1.AddScore(-5);
+
+            //act
+            var result = employee1.Result;
+
+            //Assert
+            Assert.AreEqual(3, result);
 
 
-            // act 
-
-            // assert
-            Assert.AreNotEqual(employee1.Name, employee2.Name);
         }
 
-        [Test]
-        public void WhenSurnamesAreDifferent()
+        public void Test2()
         {
-            // arrange 
-            var employee1 = GetEmployee("Dominik", "Warchol", 27);
-            var employee3 = GetEmployee("Magdalena", "Jaœkowiak", 29);
+            //arrange
+            var employee2 = new Employee("Jan", "Kowalski", 31);
+            employee2.AddScore(8);
+            employee2.AddScore(-4);
+            employee2.AddScore(6);
+
+            //act
+            var result = employee2.Result;
+
+            //Assert
+            Assert.AreEqual(3, result);
 
 
-            // act 
-
-            // assert
-            Assert.AreNotEqual(employee1.Surname, employee3.Surname);
         }
-
-        [Test]
-        public void WhenAgesAreDifferent()
-        {
-            // arrange 
-            var employee2 = GetEmployee("Jan", "Kowalski", 31);
-            var employee3 = GetEmployee("Magdalena", "Jaœkowiak", 29);
-
-
-            // act 
-
-            // assert
-            Assert.AreNotEqual(employee2.Age, employee3.Age);
-        }
-
-        [Test]
-        public void WhenTheResultsAreTheSame()
-        {
-            // arrange 
-            var employee1 = GetEmployee("Dominik", "Warchol", 27);
-            var employee2 = GetEmployee("Jan", "Kowalski", 31);
-
-
-            // act 
-
-            // assert
-            Assert.AreEqual(employee1.Result, employee2.Result);
-        }
-
-
-
-        Employee GetEmployee(string name, string Surname, int Age)
-        {
-            return new Employee(name, Surname, Age);
-        }
-
     }
 }
